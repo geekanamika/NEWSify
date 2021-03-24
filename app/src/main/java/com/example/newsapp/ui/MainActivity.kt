@@ -1,6 +1,7 @@
 package com.example.newsapp.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
-import com.example.newsapp.data.getCategories
-import com.example.newsapp.data.getTopHeadlines
 import com.example.newsapp.data.local.ArticleData
 import com.example.newsapp.ui.adapter.CategoryListAdapter
 import com.example.newsapp.ui.adapter.NewsListAdapter
@@ -25,14 +24,25 @@ class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initViewModels()
         initRecyclerView()
-        fetchData()
+        initViewModels()
     }
 
     private fun initViewModels() {
         articleListViewModel = ViewModelProviders.of(this).get(ArticleListViewModel::class.java)
         articleListViewModel?.startFetchingData()
+        articleListViewModel?.getLoadingStatus()?.observe(this, Observer {
+            isLoading ->
+
+            isLoading?.let { isLoading ->
+                if (isLoading) {
+                    indeterminateBar.visibility = View.VISIBLE
+                } else {
+                    indeterminateBar.visibility = View.GONE
+                }
+
+            }
+        })
         articleListViewModel?.getNewsNetworkLiveData()?.observe(this,
             Observer<List<ArticleData>> { articles ->
                 if (articles != null) {
@@ -41,6 +51,10 @@ class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListe
                     newsItemRecyclerView.scrollToPosition(0)
             }}
         )
+        val list = articleListViewModel?.getCategoryList()!!
+        categoryAdapter.categoryList = list
+            categoryAdapter.notifyItemRangeInserted(0, list.size)
+        categoryRecyclerView.scrollToPosition(0)
     }
 
     override fun onClick() {
@@ -53,14 +67,6 @@ class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListe
         newsItemRecyclerView.adapter = newsListAdapter
         categoryRecyclerView.adapter = categoryAdapter
         categoryRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-    }
-
-    // Todo use observer here
-    private fun fetchData() {
-        val categoryList = getCategories()
-        categoryAdapter.categoryList = categoryList
-        categoryAdapter.notifyItemRangeInserted(0, categoryList.size)
-        categoryRecyclerView.scrollToPosition(0)
     }
 }
 

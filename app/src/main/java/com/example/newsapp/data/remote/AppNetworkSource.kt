@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.newsapp.BuildConfig
 import com.example.newsapp.data.local.ArticleData
 import com.example.newsapp.data.local.NewsResponse
+import com.example.newsapp.data.models.Category
 import com.example.newsapp.utils.AppConstants
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -26,11 +27,8 @@ class AppNetworkSource private constructor() {
     val mDownloadedNewsArticles: MutableLiveData<List<ArticleData>>
     // checks about loading status & helps in loading indicator
     val isLoading: MutableLiveData<Boolean>
-    private var retrofit: Retrofit? = null
 
-    fun getIsLoading(): LiveData<Boolean> {
-        return isLoading
-    }
+    private var retrofit: Retrofit? = null
 
     init {
         if (retrofit == null) {
@@ -67,6 +65,15 @@ class AppNetworkSource private constructor() {
                 Timber.e("NewsResponse: onFailure called inside retrofit loading")
             }
         })
+    }
+
+    fun getCategories(): List<Category> {
+        return listOf(
+            Category(categoryName = "Entertainment"),
+            Category(categoryName = "Sports"),
+            Category(categoryName = "Technology"),
+            Category(categoryName = "Business")
+        )
     }
 
     private fun getRetrofit(): Retrofit { // Add all interceptors you want (headers, URL, logging, stetho logs)

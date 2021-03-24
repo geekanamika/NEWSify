@@ -2,6 +2,7 @@ package com.example.newsapp
 
 import androidx.lifecycle.LiveData
 import com.example.newsapp.data.local.ArticleData
+import com.example.newsapp.data.models.Category
 import com.example.newsapp.data.remote.AppNetworkSource
 
 /**
@@ -17,11 +18,18 @@ class AppNewsRepository private constructor(
     fun getTopNewsHeadlines(): LiveData<List<ArticleData>> {
         return networkHelper.mDownloadedNewsArticles
     }
+
     fun startFetchingData() {
         networkHelper.loadNewsArticles()
     }
 
-    val isLoadingData: LiveData<Boolean> get() = networkHelper.isLoading
+    fun getCategories(): List<Category> {
+        return networkHelper.getCategories()
+    }
+
+    fun isLoading(): LiveData<Boolean> {
+        return networkHelper.isLoading
+    }
 
     companion object {
         // For Singleton instantiation
