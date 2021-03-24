@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsapp.R
+import com.example.newsapp.data.local.ArticleData
 import com.example.newsapp.data.models.NewsItem
 import kotlinx.android.synthetic.main.item_news_article.view.*
 
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.item_news_article.view.*
 class NewsListAdapter() :
     RecyclerView.Adapter<NewsListAdapter.NewsItemViewHolder>() {
 
-    var newsFeedList: List<NewsItem> = listOf()
+    var newsFeedList: List<ArticleData> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsItemViewHolder {
         val view =
@@ -36,12 +37,11 @@ class NewsListAdapter() :
     }
 
     inner class NewsItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(newsItem: NewsItem) {
-            itemView.item_news_title.text = newsItem.title
+        fun bind(newsItem: ArticleData) {
+            itemView.item_news_title.text = newsItem.articleTitle
             itemView.item_published_time.text = newsItem.publishedAt
             Glide.with(itemView.context)
-                .load(newsItem.imageURL)
-                .apply(RequestOptions().circleCrop())
+                .load(newsItem.imageUrl)
                 .into(itemView.item_news_thumbnail)
         }
 
