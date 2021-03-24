@@ -6,7 +6,7 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.newsapp.AppNewsRepository
-import com.example.newsapp.data.local.ArticleData
+import com.example.newsapp.data.models.ArticleData
 import com.example.newsapp.data.models.Category
 import com.example.newsapp.utils.InjectorUtil
 import timber.log.Timber

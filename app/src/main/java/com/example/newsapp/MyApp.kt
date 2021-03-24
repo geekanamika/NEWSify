@@ -6,7 +6,7 @@ import timber.log.Timber
 import timber.log.Timber.DebugTree
 
 /**
- * Created by Anamika Tripathi on 12/11/18.
+ * Created by Anamika Tripathi on 23/03/21.
  */
 class MyApp : Application() {
     var mInstance: MyApp? = null

@@ -1,10 +1,9 @@
 package com.example.newsapp.data.remote
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.newsapp.BuildConfig
-import com.example.newsapp.data.local.ArticleData
-import com.example.newsapp.data.local.NewsResponse
+import com.example.newsapp.data.models.ArticleData
+import com.example.newsapp.data.models.NewsResponse
 import com.example.newsapp.data.models.Category
 import com.example.newsapp.utils.AppConstants
 import com.google.gson.GsonBuilder

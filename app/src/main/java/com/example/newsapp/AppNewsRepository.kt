@@ -1,12 +1,12 @@
 package com.example.newsapp
 
 import androidx.lifecycle.LiveData
-import com.example.newsapp.data.local.ArticleData
+import com.example.newsapp.data.models.ArticleData
 import com.example.newsapp.data.models.Category
 import com.example.newsapp.data.remote.AppNetworkSource
 
 /**
- * Created by Anamika Tripathi on 12/11/18.
+ * Created by Anamika Tripathi on 23/03/21
  */
 class AppNewsRepository private constructor(
     private val networkHelper: AppNetworkSource

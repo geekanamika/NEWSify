@@ -5,7 +5,7 @@ import com.example.newsapp.AppNewsRepository
 import com.example.newsapp.data.remote.AppNetworkSource
 
 /**
- * Created by Anamika Tripathi on 17/11/18.
+ * Created by Anamika Tripathi on 23/03/21
  */
 object InjectorUtil {
     fun provideRepository(context: Context?): AppNewsRepository? {

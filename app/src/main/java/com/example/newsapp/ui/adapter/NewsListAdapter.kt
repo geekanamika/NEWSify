@@ -5,10 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.newsapp.R
-import com.example.newsapp.data.local.ArticleData
-import com.example.newsapp.data.models.NewsItem
+import com.example.newsapp.data.models.ArticleData
 import kotlinx.android.synthetic.main.item_news_article.view.*
 
 /**

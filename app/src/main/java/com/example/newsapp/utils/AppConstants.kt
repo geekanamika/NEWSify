@@ -1,7 +1,7 @@
 package com.example.newsapp.utils
 
 /**
- * Created by Anamika Tripathi on 13/11/18.
+ * Created by Anamika Tripathi on 23/03/21
  */
 object AppConstants {
     const val BASE_URL = "https://newsapi.org/v2/"

@@ -3,13 +3,12 @@ package com.example.newsapp.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
-import com.example.newsapp.data.local.ArticleData
+import com.example.newsapp.data.models.ArticleData
 import com.example.newsapp.ui.adapter.CategoryListAdapter
 import com.example.newsapp.ui.adapter.NewsListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
