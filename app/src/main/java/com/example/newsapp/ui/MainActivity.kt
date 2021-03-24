@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.data.models.ArticleData
+import com.example.newsapp.data.models.Category
 import com.example.newsapp.ui.adapter.CategoryListAdapter
 import com.example.newsapp.ui.adapter.NewsListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,18 +47,18 @@ class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListe
             Observer<List<ArticleData>> { articles ->
                 if (articles != null) {
                     newsListAdapter.newsFeedList = articles
-                    newsListAdapter.notifyItemRangeInserted(0, articles.size)
+                    newsListAdapter.notifyDataSetChanged()
                     newsItemRecyclerView.scrollToPosition(0)
             }}
         )
         val list = articleListViewModel?.getCategoryList()!!
         categoryAdapter.categoryList = list
-            categoryAdapter.notifyItemRangeInserted(0, list.size)
+        categoryAdapter.notifyDataSetChanged()
         categoryRecyclerView.scrollToPosition(0)
     }
 
-    override fun onClick() {
-        Toast.makeText(this, "category clicked", Toast.LENGTH_SHORT).show()
+    override fun onClick(category: Category) {
+        articleListViewModel?.startFetchingData(category.categoryApiName)
     }
 
     private fun initRecyclerView() {

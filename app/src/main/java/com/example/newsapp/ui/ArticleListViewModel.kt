@@ -20,9 +20,9 @@ class ArticleListViewModel(@NonNull application: Application) :
     private var repository: AppNewsRepository? = null
     private var isLoading: LiveData<Boolean>? = null
 
-    fun startFetchingData() {
+    fun startFetchingData(categoryName:String = "general") {
         Timber.d("ArticleListViewModel: started fetching top headlines")
-        repository?.startFetchingData()
+        repository?.startFetchingData(categoryName = categoryName)
     }
 
     fun getNewsNetworkLiveData(): LiveData<List<ArticleData>>? {

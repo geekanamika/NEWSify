@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:card_view="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="@dimen/height_card_view_news_article"
-android:layout_marginLeft="@dimen/margin_4dp"
-android:layout_marginTop="@dimen/margin_4dp"
-android:layout_marginRight="@dimen/margin_4dp"
-card_view:cardUseCompatPadding="true">
-
-<RelativeLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_4dp"
+    android:layout_marginTop="@dimen/margin_4dp"
+    android:layout_marginRight="@dimen/margin_4dp"
+    android:elevation="@dimen/margin_2dp"
+    card_view:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/item_news_thumbnail"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:contentDescription="@string/thumbnail_article_image"
-        android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars" />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/item_news_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/item_news_thumbnail"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="20sp"
-        tools:text="@tools:sample/lorem" />
+        <ImageView
+            android:id="@+id/item_news_thumbnail"
+            android:layout_margin="@dimen/margin_8dp"
+            android:layout_width="@dimen/dimen_80dp"
+            android:layout_height="@dimen/dimen_80dp"
+            android:contentDescription="@string/thumbnail_article_image"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/item_published_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/item_news_title"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="15sp"
-        tools:text="@tools:sample/date/hhmm" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/item_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="16sp"
+            tools:text="@tools:sample/lorem" />
+
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>

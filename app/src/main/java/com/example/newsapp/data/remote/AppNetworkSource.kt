@@ -38,9 +38,9 @@ class AppNetworkSource private constructor() {
         isLoading = MutableLiveData()
     }
 
-    fun loadNewsArticles() {
+    fun loadNewsArticles(categoryName: String) {
         isLoading.postValue(true)
-        val newsResponse: Call<NewsResponse?> = webService!!.loadTopHeadlines(AppConstants.COUNTRY, BuildConfig.NewsApiKey)
+        val newsResponse: Call<NewsResponse?> = webService!!.loadTopHeadlines(AppConstants.COUNTRY, BuildConfig.NewsApiKey, categoryName)
 
         newsResponse.enqueue(object : Callback<NewsResponse?> {
             override fun onResponse(
@@ -68,10 +68,13 @@ class AppNetworkSource private constructor() {
 
     fun getCategories(): List<Category> {
         return listOf(
-            Category(categoryName = "Entertainment"),
-            Category(categoryName = "Sports"),
-            Category(categoryName = "Technology"),
-            Category(categoryName = "Business")
+            Category(categoryDisplayName = "General", categoryApiName = "general"),
+            Category(categoryDisplayName = "Entertainment", categoryApiName = "entertainment"),
+            Category(categoryDisplayName = "Business", categoryApiName = "business"),
+            Category(categoryDisplayName = "Health", categoryApiName = "health"),
+            Category(categoryDisplayName = "Science", categoryApiName = "science"),
+            Category(categoryDisplayName = "Sports", categoryApiName = "sports"),
+            Category(categoryDisplayName = "Technology", categoryApiName = "technology")
         )
     }
 

@@ -34,8 +34,8 @@ class CategoryListAdapter(private val listener: CategoryClickListener) :
 
     inner class CategoryItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(category: Category, listener: CategoryClickListener) {
-            itemView.item_news_category.text = category.categoryName
-            itemView.setOnClickListener{listener.onClick()}
+            itemView.item_news_category.text = category.categoryDisplayName
+            itemView.setOnClickListener{listener.onClick(category)}
             // Todo set background image using colors change
 //            Glide.with(itemView.context)
 //                .load(newsItem.imageURL)
@@ -46,6 +46,6 @@ class CategoryListAdapter(private val listener: CategoryClickListener) :
     }
 
     interface CategoryClickListener {
-        fun onClick()
+        fun onClick(category: Category)
     }
 }

@@ -19,8 +19,8 @@ class AppNewsRepository private constructor(
         return networkHelper.mDownloadedNewsArticles
     }
 
-    fun startFetchingData() {
-        networkHelper.loadNewsArticles()
+    fun startFetchingData(categoryName: String) {
+        networkHelper.loadNewsArticles(categoryName)
     }
 
     fun getCategories(): List<Category> {

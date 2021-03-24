@@ -12,6 +12,7 @@ interface WebService {
     @GET("top-headlines")
     fun loadTopHeadlines(
         @Query("country") country: String?,
-        @Query("apiKey") api_key: String?
+        @Query("apiKey") api_key: String?,
+        @Query("category") category: String?
     ): Call<NewsResponse?>
 }
