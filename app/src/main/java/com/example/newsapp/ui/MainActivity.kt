@@ -1,8 +1,11 @@
 package com.example.newsapp.ui
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +17,7 @@ import com.example.newsapp.ui.adapter.CategoryListAdapter
 import com.example.newsapp.ui.adapter.NewsListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListener {
 
     private lateinit var categoryAdapter: CategoryListAdapter
@@ -24,6 +28,14 @@ class MainActivity : AppCompatActivity(), CategoryListAdapter.CategoryClickListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val text: Spannable = SpannableString("NEWSify")
+        text.setSpan(
+            ForegroundColorSpan(Color.BLACK),
+            0,
+            text.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        supportActionBar?.title = text
         initRecyclerView()
         initViewModels()
     }
